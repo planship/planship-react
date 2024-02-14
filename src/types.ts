@@ -4,3 +4,7 @@ export interface ProviderConfig {
   websocketUrl?: string
   getAccessToken: (forceRefresh: boolean) => Promise<string>
 }
+
+export interface CustomerProviderConfig extends ProviderConfig {
+  customerId: string
+}

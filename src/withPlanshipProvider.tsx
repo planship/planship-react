@@ -6,9 +6,9 @@ import { ProviderConfig } from './types'
 
 export default function withPlanshipProvider(config: ProviderConfig) {
   const { url, websocketUrl, slug, getAccessToken } = config
+  const planshipApiClient = new Planship(slug, url || 'https://api.planship.io', getAccessToken, websocketUrl)
 
   const PlanshipProvider = ({ children }: { children: ReactNode }) => {
-    const planshipApiClient = new Planship(slug, url || 'https://api.planship.io', getAccessToken, websocketUrl)
     return <Provider value={{ planshipApiClient }}>{children}</Provider>
   }
 
