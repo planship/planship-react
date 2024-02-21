@@ -1,8 +1,10 @@
+import { TokenGetter } from '@planship/fetch'
+
 export interface ProviderConfig {
-  url?: string
+  baseUrl?: string
   slug: string
-  websocketUrl?: string
-  getAccessToken: (forceRefresh: boolean) => Promise<string>
+  webSocketUrl?: string
+  getAccessToken: TokenGetter
 }
 
 export interface CustomerProviderConfig extends ProviderConfig {

@@ -1,10 +1,10 @@
-import { CustomerSubscriptionWithPlan, JSONValue, PlanshipCustomer } from '@planship/fetch'
+import { CustomerSubscriptionWithPlan, Entitlements, PlanshipCustomer } from '@planship/fetch'
 
 import { createContext } from 'react'
 
 interface IPlanshipCustomerContext {
   planshipCustomerApiClient?: PlanshipCustomer
-  entitlements: JSONValue
+  entitlements: Entitlements
   subscriptions: CustomerSubscriptionWithPlan[]
 }
 const context = createContext<IPlanshipCustomerContext>({

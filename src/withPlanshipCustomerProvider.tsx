@@ -1,23 +1,20 @@
 import React, { ReactNode, useState, useEffect } from 'react'
 
-import { CustomerSubscriptionWithPlan, PlanshipCustomer, JSONValue } from '@planship/fetch'
+import { CustomerSubscriptionWithPlan, PlanshipCustomer, Entitlements } from '@planship/fetch'
 import { Provider } from './customerContext'
 import { CustomerProviderConfig } from './types'
 
 export default function withPlanshipCustomerProvider(
   config: CustomerProviderConfig,
-  initialEntitlements: JSONValue,
+  initialEntitlements: Entitlements,
   initialSubscriptions: CustomerSubscriptionWithPlan[]
 ) {
-  const { url, websocketUrl, slug, getAccessToken, customerId } = config
+  const { baseUrl, webSocketUrl, slug, getAccessToken, customerId } = config
 
-  const planshipCustomerApiClient = new PlanshipCustomer(
-    slug,
-    customerId,
-    url || 'https://api.planship.io',
-    getAccessToken,
-    websocketUrl
-  )
+  const planshipCustomerApiClient = new PlanshipCustomer(slug, customerId, getAccessToken, {
+    baseUrl,
+    webSocketUrl
+  })
 
   const PlanshipCustomerProvider = ({ children }: { children: ReactNode }) => {
     const [entitlements, setEntitlements] = useState(initialEntitlements)
