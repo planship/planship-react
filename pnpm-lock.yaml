@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@planship/fetch':
-    specifier: 0.2.1
-    version: 0.2.1
+    specifier: ^0.2.2
+    version: 0.2.2
 
 devDependencies:
   '@types/react':
@@ -140,8 +140,8 @@ packages:
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
     dev: true
 
-  /@planship/fetch@0.2.1:
-    resolution: {integrity: sha512-/KdPVqXXAGHbgVRsX6tLsjhS8fZYI+simvJeGwxltOMg7Eeud2mUDG75g0BkOf2iQLeOUlYV9GJJYUIElXYN+Q==}
+  /@planship/fetch@0.2.2:
+    resolution: {integrity: sha512-5QoTCBoqOsOjJjiYhNC39HX7vbiYgnF08YQocT2wlrZO0s9CVIwZwS6CsOQDzqvFIlyk2m/9WFKmmA2TQaW8jQ==}
     dependencies:
       '@planship/models': 0.2.1
     dev: false
