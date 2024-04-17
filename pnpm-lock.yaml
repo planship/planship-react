@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@planship/fetch':
-    specifier: ^0.2.2
-    version: 0.2.2
+    specifier: ^0.2.3
+    version: 0.2.3
 
 devDependencies:
   '@types/react':
@@ -140,14 +140,14 @@ packages:
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
     dev: true
 
-  /@planship/fetch@0.2.2:
-    resolution: {integrity: sha512-5QoTCBoqOsOjJjiYhNC39HX7vbiYgnF08YQocT2wlrZO0s9CVIwZwS6CsOQDzqvFIlyk2m/9WFKmmA2TQaW8jQ==}
+  /@planship/fetch@0.2.3:
+    resolution: {integrity: sha512-2uiC5fMJ26VdJrbybeCLYYLjVVkDtEO/jouLGlFxmH/XQ3rlijy3YaGAK6pESX1NAf0boZsClxSRJZ0nLJe7ow==}
     dependencies:
-      '@planship/models': 0.2.1
+      '@planship/models': 0.2.2
     dev: false
 
-  /@planship/models@0.2.1:
-    resolution: {integrity: sha512-Tw2wMFp4+IZZmnubngMEV6RXXCUx/rX/FDLPImR5QKh0qVuRomAh21n22X9FIl2Qi8GcHiLIQ4geNlxuP7AQzw==}
+  /@planship/models@0.2.2:
+    resolution: {integrity: sha512-hYnp0WXUsgbOE/IRlN9Jxjyp47+a425lOjtwO3DYGysk+jHTcnY9GgRsevnctXjE5kOvXJKXHnkvlJfFZbLH3w==}
     dev: false
 
   /@types/json-schema@7.0.15:
