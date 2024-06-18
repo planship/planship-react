@@ -1,4 +1,4 @@
-import { TokenGetter } from '@planship/fetch'
+import { Entitlements, TokenGetter } from '@planship/fetch'
 
 export interface ProviderConfig {
   baseUrl?: string
@@ -9,4 +9,12 @@ export interface ProviderConfig {
 
 export interface CustomerProviderConfig extends ProviderConfig {
   customerId: string
+}
+
+export class EntitlementsBase {
+  protected entitlementsDict: Entitlements = {}
+
+  constructor(entitlementsDict: Entitlements) {
+    this.entitlementsDict = entitlementsDict
+  }
 }

@@ -2,6 +2,8 @@
 
 Welcome to the [Planship](https://planship.io) client-side SDK for React. This SDK is built on top of the [@planship/fetch](https://github.com/planship/planship-js/tree/master/packages/fetch) JavaScript library, and it uses the [React Context API](https://react.dev/learn/passing-data-deeply-with-context) to make consuming Planship data and functionality in React and Next.js apps easier.
 
+A complete working example of a Next.js app integrated with Planship can be found at https://github.com/planship/planship-nextjs-example
+
 ## The basics
 
 The Planship React SDK implements two context providers:
@@ -132,17 +134,50 @@ export default function SubscriptionInfoComponent({ children }) {
   useEffect(() => {
     async function fetchSubscriptions() {
       // No customer ID is required in PlanshipCustomer API client calls
-      planshipCustomerApiClient.listSubscriptions((s) => setSubscriptions(s))
+      planshipCustomerApiClient.listSubscriptions().then((s) => setSubscriptions(s))
     }
 
     fetchSubscriptions()
-  }, [user])
+  }, [planshipCustomerApiClient])
 
   return (
     // Render a list of Planship customer subscriptions
   )
 }
 ```
+
+### Typed entitlements with PlanshipCustomer context provider
+
+When consuming PlanshipCustomer context in a TypeScript project, entitlements can be defined as a class with getters for individual levers, and passed to the `usePlanshipCustomer` hook.
+
+```js
+import { usePlanshipCustomer, EntitlementsBase } from '@planship/react'
+
+class Entitlements extends EntitlementsBase {
+  get apiCallsPerMonth(): number {
+    return this.entitlementsDict?.['api-calls-per-month'].valueOf()
+  }
+
+  get advancedAnalytics(): boolean {
+    return this.entitlementsDict?.['advanced-analytics']
+  }
+}
+
+export default function YourComponent({ children }) {
+  const { entitlements } = usePlanshipCustomer<Entitlements>(Entitlements)
+
+  // entitlements object is an instance of the Entitlements class
+  // with apiCallsPerMonth and advancedAnalytics properties
+
+  if (advancedAnalytics.advancedAnalytics) {
+    // do something if advancedAnalytics are enabled
+  }
+}
+```
+
+This is helpful in certain IDEs like VS Code where it unlocks a full autocomplete experience for pricing entitlements entitlements.
+
+<img src="./static/entitlements-vscode.gif" alt="Animation showing entitlements autocomplete in VS Code">
 
 ## Using Planship providers in a Next.js app
 
@@ -198,11 +233,11 @@ export default async function RootLayout({
 }
 ```
 
-A complete working example of a Nuxt.js app integrated with Planship can be found at https://github.com/planship/planship-nextjs-demo
+This pattern can be explored in more detail in our Next.js app example app at https://github.com/planship/planship-nextjs-example
 
 ## Links
 
-- [Planship Next.js demo app](https://github.com/planship/planship-nextjs-demo)
+- [Planship Next.js example app](https://github.com/planship/planship-nextjs-example)
 - [@planship/fetch library at the NPM Registry](https://www.npmjs.com/package/@planship/fetch)
 - [Planship documentation](https://docs.planship.io)
 - [Planship console](https://app.planship.io)

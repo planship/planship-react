@@ -7,6 +7,7 @@ interface IPlanshipCustomerContext {
   entitlements: Entitlements
   subscriptions: CustomerSubscriptionWithPlan[]
 }
+
 const context = createContext<IPlanshipCustomerContext>({
   planshipCustomerApiClient: undefined,
   entitlements: {},
