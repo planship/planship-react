@@ -16,11 +16,13 @@ export function usePlanshipCustomer<TEntititlements extends EntitlementsBase>(en
 }): ICustomerContext<TEntititlements>
 export function usePlanshipCustomer(entitlementsType?: { new (entitlementsDict: Entitlements): object }) {
   const currentContext = useContext<IPlanshipCustomerContext>(context)
-  if (entitlementsType)
+  if (entitlementsType) {
     return {
       planshipCustomerApiClient: currentContext.planshipCustomerApiClient,
       subscriptions: currentContext.subscriptions,
       entitlements: new entitlementsType(currentContext.entitlements)
     }
-  else return currentContext
+  } else {
+    return currentContext
+  }
 }

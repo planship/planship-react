@@ -7,8 +7,9 @@
   "scripts": {
     "build": "rm -rf dist && tsc",
     "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "eslint --fix . --ext .ts,.tsx",
     "build-docs": "typedoc --options typedoc.json",
-    "format": "prettier --ignore-path .gitignore --write \"**/*.+(tsx|ts|json)\"",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(tsx|ts)\"",
     "publish-alpha": "pnpm build && pnpm publish --tag alpha --no-git-checks",
     "publish-latest": "pnpm build && pnpm publish"
   },

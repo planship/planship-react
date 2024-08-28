@@ -148,7 +148,7 @@ export default function SubscriptionInfoComponent({ children }) {
 
 ### Typed entitlements with PlanshipCustomer context provider
 
-When consuming PlanshipCustomer context in a TypeScript project, entitlements can be defined as a class with getters for individual levers, and passed to the `usePlanshipCustomer` hook.
+When working with the entitlements dictionary returned by `usePlanshipCustomer` hook, it can be useful to wrap it in an object with getters for individual levers.
 
 ```js
 import { usePlanshipCustomer, EntitlementsBase } from '@planship/react'
@@ -175,13 +175,13 @@ export default function YourComponent({ children }) {
 }
 ```
 
-This is helpful in certain IDEs like VS Code where it unlocks a full autocomplete experience for pricing entitlements entitlements.
+This is especially advantageous in IDEs like VS Code where it enables autocomplete for `entitlements`.
 
 <img src="./static/entitlements-vscode.gif" alt="Animation showing entitlements autocomplete in VS Code">
 
 ## Using Planship providers in a Next.js app
 
-By default, all components in a Next.js app are React Server Components. React Server Components don't allow for consuming React context *directly*, so Planship context providers cannot by used *as is*. To address this, simply wrap them your own Client Component as outlined in [this official guide](https://vercel.com/guides/react-context-state-management-nextjs#rendering-third-party-context-providers-in-server-components).
+By default, all components in a Next.js app are React Server Components. React Server Components don't allow for consuming React context *directly*, so Planship context providers cannot by used *as is*. To address this, simply wrap them in your own Client Component as outlined in [this official guide](https://vercel.com/guides/react-context-state-management-nextjs#rendering-third-party-context-providers-in-server-components).
 
 ```js
 'use client'
@@ -233,7 +233,7 @@ export default async function RootLayout({
 }
 ```
 
-This pattern can be explored in more detail in our Next.js app example app at https://github.com/planship/planship-nextjs-example
+This pattern can be explored in more detail in our Next.js example app at https://github.com/planship/planship-nextjs-example
 
 ## Links
 
