@@ -1,9 +1,9 @@
-import { Planship } from '@planship/fetch'
+import type { PlanshipApi } from '@planship/fetch'
 
 import { createContext } from 'react'
 
 interface IPlanshipContext {
-  planshipApiClient?: Planship
+  planshipApiClient?: PlanshipApi
 }
 const context = createContext<IPlanshipContext>({
   planshipApiClient: undefined

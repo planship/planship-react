@@ -1,6 +1,6 @@
 # planship-react
 
-Welcome to the [Planship](https://planship.io) client-side SDK for React. This SDK is built on top of the [@planship/fetch](https://github.com/planship/planship-js/tree/master/packages/fetch) JavaScript library, and it uses the [React Context API](https://react.dev/learn/passing-data-deeply-with-context) to make consuming Planship data and functionality in React and Next.js apps easier.
+Welcome to `@planship/react`, the client-side SDK for [React](https://react.dev/) that enables entitlements, metering, plan packaging, and customer/subscription management in your React and [Next.js](https://nextjs.org/) apps powered by [Planship](https://planship.io). This SDK is built on top of the [@planship/fetch](https://github.com/planship/planship-js/tree/master/packages/fetch) JavaScript library and it uses the [React Context API](https://react.dev/learn/passing-data-deeply-with-context).
 
 A complete working example of a Next.js app integrated with Planship can be found at https://github.com/planship/planship-nextjs-example
 
@@ -8,9 +8,9 @@ A complete working example of a Next.js app integrated with Planship can be foun
 
 The Planship React SDK implements two context providers:
 
-- [`Planship`](#planship-context-provider) provider initialized with `withPlanshipProvider` and accessible via the `usePlanship` hook. This provider exposes an instance of the [Planship API client class](https://github.com/planship/planship-js/blob/master/packages/fetch/docs/classes/Planship.md).
+- [`Planship`](#planship-context-provider) provider initialized with `withPlanshipProvider` and accessible via the `usePlanship` hook. This provider exposes an instance of the [Planship API client class](https://github.com/planship/planship-js/tree/master/packages/fetch/docs/interfaces/PlanshipApi.md).
 
-- [`PlanshipCustomer`](#planshipcustomer-context-provider) provider initialized with `withPlanshipCustomerProvider` and accessible via the `usePlanshipCustomer` hook. This provider exposes an instance of the [Planship Customer API client class](https://github.com/planship/planship-js/blob/master/packages/fetch/docs/classes/PlanshipCustomer.md) as well as customer `entitlements` that are automatically updated via a WebSocket connection.
+- [`PlanshipCustomer`](#planshipcustomer-context-provider) provider initialized with `withPlanshipCustomerProvider` and accessible via the `usePlanshipCustomer` hook. This provider exposes an instance of the [Planship Customer API client class](https://github.com/planship/planship-js/tree/master/packages/fetch/docs/interfaces/PlanshipCustomerApi.md) initialized for a specific customer, as well as their `entitlements` that are continously updated via a WebSocket connection.
 
 ## Installation
 
@@ -26,9 +26,9 @@ pnpm add @planship/react
 
 ## Planship context provider
 
-The Planship context provider is designed to be initialized at the very top of your layout where the Planship customer ID might not be known (E.g. outside of your authed layout).
+The `Planship` context provider is designed to be initialized at the very top of your layout where the Planship customer ID might not be known (E.g. outside of your authed layout).
 
-With `@planship/react` installed, initialize the Planship context provider, and wrap your components with it.
+With `@planship/react` added to your project, initialize `PlanshipProvider` using the `withPlanshipProvider` function, and wrap your components with it.
 
 ```js
 import { withPlanshipProvider } from '@planship/react'
@@ -49,7 +49,7 @@ function App() {
 }
 ```
 
-Then, consume the Planship context in any of the nested components:
+Then, consume the `Planship` context in any of the nested components using the `usePlanship` hook:
 
 ```js
 import { usePlanship } from '@planship/react'
@@ -78,11 +78,11 @@ export default function YourComponent({ children }) {
 }
 ```
 
-## PlanshipCustomer context provider
+## `PlanshipCustomer` context provider
 
-The PlanshipCustomer context provider is designed to be initialized within a context where the Planship customer ID (typically your current user) is known, and it makes consuming customer level data like entitlements much easier.
+The `PlanshipCustomer` context provider is designed to be initialized within a context where the Planship customer ID (typically your current user) is known, and it makes consuming customer level data like entitlements much easier.
 
-With `planship-react` installed, initialize the PlanshipCustomer context provider, and wrap your components with it.
+With `@planship/react` added to your project, initialize `PlanshipCustomerProvider` using `withPlanshipCustomerProvider`, and wrap your components with it.
 
 ```js
 import { withPlanshipCustomerProvider } from '@planship/react'
@@ -119,7 +119,7 @@ export default function YourComponent({ children }) {
 }
 ```
 
-Just like the Planship provider, PlanshipCustomer exposes the full Planship API. However, no customer ID is required for customer operations.
+To fetch additional data from Planship, use an instance of the [Planship Customer API](https://github.com/planship/planship-js/blob/master/packages/fetch/docs/interfaces/PlanshipCustomerApi.md) client exposed by the `PlanshipCustomer` context. The example below shows how a list of customer subscriptions can be fetched from Planship.
 
 ```js
 import { usePlanshipCustomer } from '@planship/react'
@@ -128,7 +128,7 @@ export default function SubscriptionInfoComponent({ children }) {
   const { planshipCustomerApiClient } = usePlanshipCustomer()
 
   // React state for Planship subscriptions
-  const [subscriptions, setSubscriptions ] = useState(() => ([]))
+  const [subscriptions, setSubscriptions ] = useState(() => [])
 
   // useEffect hook to retrieve subscriptions via the Planship API
   useEffect(() => {
@@ -148,7 +148,7 @@ export default function SubscriptionInfoComponent({ children }) {
 
 ### Typed entitlements with PlanshipCustomer context provider
 
-When working with the entitlements dictionary returned by `usePlanshipCustomer` hook, it can be useful to wrap it in an object with getters for individual levers.
+When working with the entitlements dictionary returned by the `usePlanshipCustomer` hook, it can be useful to wrap it in an object with getters for individual levers.
 
 ```js
 import { usePlanshipCustomer, EntitlementsBase } from '@planship/react'

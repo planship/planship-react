@@ -1,6 +1,6 @@
 {
   "name": "@planship/react",
-  "version": "0.3.0-alpha4",
+  "version": "0.3.0",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,10 +8,9 @@
     "build": "rm -rf dist && tsc",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint --fix . --ext .ts,.tsx",
-    "build-docs": "typedoc --options typedoc.json",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(tsx|ts)\"",
-    "publish-alpha": "pnpm build && pnpm publish --tag alpha --no-git-checks",
-    "publish-latest": "pnpm build && pnpm publish"
+    "publish:alpha": "pnpm build && pnpm publish --tag alpha --no-git-checks",
+    "publish:latest": "pnpm build && pnpm publish"
   },
   "keywords": [
     "React",

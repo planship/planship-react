@@ -1,4 +1,4 @@
-import { Entitlements, TokenGetter } from '@planship/fetch'
+import type { Entitlements, TokenGetter } from '@planship/fetch'
 
 export interface ProviderConfig {
   baseUrl?: string

@@ -1,13 +1,12 @@
 import React, { ReactNode, useState, useEffect } from 'react'
 
-import { CustomerSubscriptionWithPlan, PlanshipCustomer, Entitlements } from '@planship/fetch'
+import { PlanshipCustomer, type Entitlements } from '@planship/fetch'
 import { Provider } from './customerContext'
-import { CustomerProviderConfig } from './types'
+import type { CustomerProviderConfig } from './types'
 
 export default function withPlanshipCustomerProvider(
   config: CustomerProviderConfig,
-  initialEntitlements: Entitlements,
-  initialSubscriptions: CustomerSubscriptionWithPlan[]
+  initialEntitlements: Entitlements
 ) {
   const { baseUrl, webSocketUrl, slug, getAccessToken, customerId } = config
 
@@ -18,7 +17,6 @@ export default function withPlanshipCustomerProvider(
 
   const PlanshipCustomerProvider = ({ children }: { children: ReactNode }) => {
     const [entitlements, setEntitlements] = useState(initialEntitlements)
-    const [subscriptions, setSubscriptions] = useState(initialSubscriptions)
 
     useEffect(() => {
       let isFetching = false
@@ -26,7 +24,6 @@ export default function withPlanshipCustomerProvider(
       async function fetchAll() {
         if (!isFetching) {
           planshipCustomerApiClient.getEntitlements((e) => setEntitlements(e)).then((e) => setEntitlements(e))
-          planshipCustomerApiClient.listSubscriptions().then((s) => setSubscriptions(s))
         }
       }
 
@@ -36,7 +33,7 @@ export default function withPlanshipCustomerProvider(
       }
     }, [])
 
-    return <Provider value={{ planshipCustomerApiClient, entitlements, subscriptions }}>{children}</Provider>
+    return <Provider value={{ planshipCustomerApiClient, entitlements }}>{children}</Provider>
   }
 
   return PlanshipCustomerProvider
