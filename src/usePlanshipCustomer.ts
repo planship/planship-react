@@ -1,8 +1,8 @@
 import { useContext } from 'react'
 
-import context, { type IPlanshipCustomerContext } from './customerContext'
+import context, { type IPlanshipCustomerContext } from './customerContext.js'
 import type { Entitlements, PlanshipCustomer } from '@planship/fetch'
-import { EntitlementsBase } from './types'
+import { EntitlementsBase } from './types.js'
 
 interface ICustomerContext<T extends EntitlementsBase> {
   planshipCustomerApiClient?: PlanshipCustomer

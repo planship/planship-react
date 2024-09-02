@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react'
 
 import { Planship } from '@planship/fetch'
-import { Provider } from './context'
-import type { ProviderConfig } from './types'
+import { Provider } from './context.js'
+import type { ProviderConfig } from './types.js'
 
 export default function withPlanshipProvider(config: ProviderConfig) {
   const { baseUrl, webSocketUrl, slug, getAccessToken } = config

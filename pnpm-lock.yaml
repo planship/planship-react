@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@planship/fetch':
-    specifier: 0.3.0
-    version: 0.3.0
+    specifier: 0.3.2
+    version: 0.3.2
 
 devDependencies:
   '@types/react':
@@ -34,6 +34,9 @@ devDependencies:
   eslint-plugin-react-hooks:
     specifier: ^4.6.2
     version: 4.6.2(eslint@8.57.0)
+  eslint-plugin-require-extensions:
+    specifier: ^0.1.3
+    version: 0.1.3(eslint@8.57.0)
   prettier:
     specifier: ^3.3.3
     version: 3.3.3
@@ -137,14 +140,14 @@ packages:
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
     dev: true
 
-  /@planship/fetch@0.3.0:
-    resolution: {integrity: sha512-DlZvFacTCixakLqo4OXpomEzyto0Sd4dFo2597INiOQEffvHq55e4dkyybZ/Oc+r4Ij9sPovnf5T9+czU594zQ==}
+  /@planship/fetch@0.3.2:
+    resolution: {integrity: sha512-u9AhXxttCt/J2+Q++uxqFGliPWedk5gSXoMMKKSSRUJJLIC4i+rYZHYN6643VheCaVrIZmeg5cngVUSEHfT4dQ==}
     dependencies:
-      '@planship/models': 0.3.0
+      '@planship/models': 0.3.2
     dev: false
 
-  /@planship/models@0.3.0:
-    resolution: {integrity: sha512-j9bN0b6pVQ94EZdOI4I9FdfYYMipXkydNmUaGdRrm78QY5iZiCGRhF57B+tnJm6EB7ZaJTG07FzE2ad9mO9GJg==}
+  /@planship/models@0.3.2:
+    resolution: {integrity: sha512-PMfuIegyXIIReoQ6mo11HcNG0eGwZQRN6YKYlGcGHNzPyg8Ls2rBWqEtMo3Him956HlE3RmyYmO4oO89ejCo4Q==}
     dev: false
 
   /@types/prop-types@15.7.12:
@@ -765,6 +768,15 @@ packages:
       string.prototype.repeat: 1.0.0
     dev: true
 
+  /eslint-plugin-require-extensions@0.1.3(eslint@8.57.0):
+    resolution: {integrity: sha512-T3c1PZ9PIdI3hjV8LdunfYI8gj017UQjzAnCrxuo3wAjneDbTPHdE3oNWInOjMA+z/aBkUtlW5vC0YepYMZIug==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      eslint: '*'
+    dependencies:
+      eslint: 8.57.0
+    dev: true
+
   /eslint-scope@7.2.2:
     resolution: {integrity: sha512-dOt21O7lTMhDM+X9mB4GX+DZrZtCUJPL/wlcTqxyrx5IvO0IYtILdtrQGQp+8n5S0gwSVmOf9NQrjMOgfQZlIg==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
@@ -1047,7 +1059,7 @@ packages:
       source-map: 0.6.1
       wordwrap: 1.0.0
     optionalDependencies:
-      uglify-js: 3.19.2
+      uglify-js: 3.19.3
     dev: true
 
   /has-bigints@1.0.2:
@@ -1948,8 +1960,8 @@ packages:
     hasBin: true
     dev: true
 
-  /uglify-js@3.19.2:
-    resolution: {integrity: sha512-S8KA6DDI47nQXJSi2ctQ629YzwOVs+bQML6DAtvy0wgNdpi+0ySpQK0g2pxBq2xfF2z3YCscu7NNA8nXT9PlIQ==}
+  /uglify-js@3.19.3:
+    resolution: {integrity: sha512-v3Xu+yuwBXisp6QYTcH4UbH+xYJXqnq2m/LtQVWKWzYc1iehYnLixoQDN9FH6/j9/oybfd6W9Ghwkl8+UMKTKQ==}
     engines: {node: '>=0.8.0'}
     hasBin: true
     requiresBuild: true

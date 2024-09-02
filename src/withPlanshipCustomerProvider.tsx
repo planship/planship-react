@@ -1,8 +1,8 @@
 import React, { ReactNode, useState, useEffect } from 'react'
 
 import { PlanshipCustomer, type Entitlements } from '@planship/fetch'
-import { Provider } from './customerContext'
-import type { CustomerProviderConfig } from './types'
+import { Provider } from './customerContext.js'
+import type { CustomerProviderConfig } from './types.js'
 
 export default function withPlanshipCustomerProvider(
   config: CustomerProviderConfig,
