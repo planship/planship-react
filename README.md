@@ -28,7 +28,7 @@ pnpm add @planship/react
 
 The `Planship` context provider is designed to be initialized at the very top of your layout where the Planship customer ID might not be known (E.g. outside of your authed layout).
 
-With `@planship/react` added to your project, initialize `PlanshipProvider` using the `withPlanshipProvider` function, and wrap your components with it.
+With `@planship/react` added to your project, initialize `PlanshipProvider` using `withPlanshipProvider`, and wrap your components with it.
 
 ```js
 import { withPlanshipProvider } from '@planship/react'
